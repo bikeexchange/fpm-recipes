@@ -2,16 +2,15 @@ class Nginx < FPM::Cookery::Recipe
   description 'a high performance web server and a reverse proxy server'
 
   name     'nginx'
-  version  '1.3.0'
-  revision 1
+  version  '1.6.0'
   homepage 'http://nginx.org/'
   source   "http://nginx.org/download/nginx-#{version}.tar.gz"
-  sha256   'e95d4e5f840afe0e85f95689a10ffa8acaf5a4a1372fe285b175fbc807a5f409'
+  sha256   '943ad757a1c3e8b3df2d5c4ddacc508861922e36fa10ea6f8e3a348fc9abfc1a'
 
   section 'httpd'
 
-  build_depends 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev (<< 1.0.0)'
-  depends       'libpcre3', 'zlib1g', 'libssl0.9.8'
+  build_depends 'libpcre3-dev', 'zlib1g-dev', 'libssl-dev'
+  depends       'libpcre3', 'zlib1g', 'libssl1.0.0'
 
   provides  'nginx-full', 'nginx-common'
   replaces  'nginx-full', 'nginx-common'
@@ -25,6 +24,7 @@ class Nginx < FPM::Cookery::Recipe
       '--with-http_stub_status_module',
       '--with-http_ssl_module',
       '--with-http_gzip_static_module',
+      '--with-http_spdy_module',
       '--with-pcre',
       '--with-debug',
 
