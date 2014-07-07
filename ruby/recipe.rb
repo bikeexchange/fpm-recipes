@@ -2,11 +2,11 @@ class Ruby210 < FPM::Cookery::Recipe
   description 'The Ruby virtual machine'
 
   name 'ruby2.1'
-  version '2.1.1.0'
+  version '2.1.2'
   revision 0
   homepage 'http://www.ruby-lang.org/'
-  source 'http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.bz2'
-  sha256 '96aabab4dd4a2e57dd0d28052650e6fcdc8f133fa8980d9b936814b1e93f6cfc'
+  source "http://cache.ruby-lang.org/pub/ruby/2.1/ruby-#{version}.tar.bz2"
+  sha256 '6948b02570cdfb89a8313675d4aa665405900e27423db408401473f30fc6e901'
 
   section 'interpreters'
 
