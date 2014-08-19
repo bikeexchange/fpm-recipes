@@ -11,5 +11,6 @@ class LogstashForwarder < FPM::Cookery::Recipe
 
   def install
     bin.install 'build/bin/logstash-forwarder'
+    etc('init.d').install_p('logstash-forwarder.init', 'logstash-forwarder')
   end
 end
