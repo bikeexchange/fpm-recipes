@@ -6,6 +6,9 @@ class LogstashForwarder < FPM::Cookery::Recipe
   build_depends 'go'
 
   def build
+    inline_replace "Makefile" do |s|
+      s.gsub! 'go1.[12]', 'go1.[123]'
+    end
     make
   end
 
