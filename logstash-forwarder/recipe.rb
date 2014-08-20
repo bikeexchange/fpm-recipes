@@ -3,8 +3,8 @@ class LogstashForwarder < FPM::Cookery::Recipe
   version  Time.now.to_i.to_s
   source   'https://github.com/elasticsearch/logstash-forwarder', :with => :git
 
-  build_depends 'golang'
-  
+  build_depends 'go'
+
   def build
     make
   end
