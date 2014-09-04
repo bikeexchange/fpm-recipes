@@ -1,7 +1,7 @@
 class LogstashForwarder < FPM::Cookery::Recipe
   name     'logstash-forwarder'
   version  Time.now.to_i.to_s
-  source   'https://github.com/mipearson/logstash-forwarder', :with => :git
+  source   'https://github.com/mipearson/logstash-forwarder', :with => :git, branch: 'MultipleConfigFiles'
 
   build_depends 'go'
 
@@ -10,7 +10,7 @@ class LogstashForwarder < FPM::Cookery::Recipe
       s.gsub! 'go1.[12]', 'go1.[123]'
     end
     inline_replace 'logstash-forwarder.init' do |s|
-      s.gsub! 'opt\/logstash-forwarder', 'usr/bin'
+      s.gsub! 'opt', 'usr/bin'
     end
     make
   end
