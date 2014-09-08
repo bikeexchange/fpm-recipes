@@ -9,15 +9,12 @@ class LogstashForwarder < FPM::Cookery::Recipe
     inline_replace "Makefile" do |s|
       s.gsub! 'go1.[12]', 'go1.[123]'
     end
-    inline_replace 'logstash-forwarder.init' do |s|
-      s.gsub! 'opt', 'usr/bin'
-    end
     make
   end
 
   def install
     bin.install 'build/bin/logstash-forwarder'
-    etc('init.d').install_p('logstash-forwarder.init', 'logstash-forwarder')
+    etc('init').install_p(workdir('logstash-forwarder.upstart.conf'), 'logstash-forwarder.conf')
   end
 end
 
